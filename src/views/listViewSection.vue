@@ -146,7 +146,11 @@ watch(() => store.todos, (newState) => {
 }
 
 ::-webkit-scrollbar {
-  display: none;
+  width: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(rgba(55,65,81,0.5), rgba(255,211,111,0.5));
+  border-radius: 10px;
 }
 
 .todos {
