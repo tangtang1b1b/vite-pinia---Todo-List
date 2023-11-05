@@ -49,9 +49,7 @@ const deleteAll = () => {
       if (result.isConfirmed) {
         store.todos = store.todos.filter((todo) => !todo.complete)
         Swal.fire(
-          'Deleted!',
-          'Your file has been deleted.',
-          'success'
+          '成功'
         )
       }
     });
