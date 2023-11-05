@@ -32,19 +32,19 @@ const filterTodos = computed(() => {
 });
 
 const deleteTarget = (index) => {
-  store.todos.splice(store.todos.indexOf(filterTodos.value[index]),1)
+  store.todos.splice(store.todos.indexOf(filterTodos.value[index]), 1)
 };
 
 const deleteAll = () => {
-  if(store.todos.filter((todo) => todo.complete).length !== 0){
+  if (store.todos.filter((todo) => todo.complete).length !== 0) {
     Swal.fire({
-    title: '確定要清除嗎?',
-    icon: 'warning',
-    showCancelButton: true,
-    cancelButtonText: '取消',
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: '確定'
+      title: '確定要清除嗎?',
+      icon: 'warning',
+      showCancelButton: true,
+      cancelButtonText: '取消',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: '確定'
     }).then((result) => {
       if (result.isConfirmed) {
         store.todos = store.todos.filter((todo) => !todo.complete)
@@ -75,7 +75,7 @@ watch(() => store.todos, (newState) => {
       <div class="downLine"></div>
     </div>
     <div class="todos">
-      <div class="todoItem" v-for="(todo,index) in filterTodos" :key="todo">
+      <div class="todoItem" v-for="(todo, index) in filterTodos" :key="todo">
         <div class="checkContainer">
           <input type="checkbox" id="checkBox" v-model="todo.complete">
         </div>
@@ -86,7 +86,7 @@ watch(() => store.todos, (newState) => {
     <div class="actionContainer">
       <div class="actions">
         <div class="record"><span>{{ record }}</span>個待完成項目</div>
-        <div class="deleteAll"  @click="deleteAll"><span>清除已完成項目</span></div>
+        <div class="deleteAll" @click="deleteAll"><span>清除已完成項目</span></div>
       </div>
     </div>
   </div>
@@ -145,8 +145,14 @@ watch(() => store.todos, (newState) => {
   }
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 .todos {
   width: 100%;
+  height: 50vh;
+  overflow-y: scroll;
 
   .todoItem {
     height: 60px;
@@ -195,11 +201,13 @@ watch(() => store.todos, (newState) => {
         opacity: 1;
         transition: 0.1s;
       }
-      .material-symbols-outlined{
+
+      .material-symbols-outlined {
         color: #ccc;
         transition: 0.1s;
       }
-      &:hover .material-symbols-outlined{
+
+      &:hover .material-symbols-outlined {
         color: $title-color;
         transition: 0.1s;
       }
@@ -237,10 +245,12 @@ watch(() => store.todos, (newState) => {
     .deleteAll {
       justify-content: flex-end;
       cursor: pointer;
-      span{
+
+      span {
         color: #ccc;
         transition: 0.3s;
-        &:hover{
+
+        &:hover {
           color: $title-color;
         }
       }

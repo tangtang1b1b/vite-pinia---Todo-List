@@ -1,6 +1,6 @@
 <script setup>
 import Swal from 'sweetalert2';
-import { defineProps, onMounted, ref } from 'vue';
+import { defineProps, onMounted, ref, nextTick } from 'vue';
 import { useStore } from '@/stores/counter';
 const store = useStore();
 
@@ -19,16 +19,8 @@ const keyTodo = () => {
   const keyDetail = { item: keyWord.value, complete: false };
   store.todos.push(keyDetail);
   keyWord.value = '';
-  localStorage.setItem('todos',JSON.stringify(store.todos));
+  localStorage.setItem('todos', JSON.stringify(store.todos));
 }
-
-onMounted(() => {
-  //計算addButton寬高
-  const inputContainer = document.querySelector('#inputContainer');
-  const addButton = document.querySelector('#addButton');
-  addButton.style.width = `${inputContainer.getBoundingClientRect().height - 5}px`;
-  addButton.style.height = `${inputContainer.getBoundingClientRect().height - 5}px`;
-});
 
 </script>
 
@@ -68,6 +60,8 @@ onMounted(() => {
 
   #addButton {
     cursor: pointer;
+    width: 48px;
+    height: 48px;
     user-select: none;
     position: absolute;
     display: flex;
