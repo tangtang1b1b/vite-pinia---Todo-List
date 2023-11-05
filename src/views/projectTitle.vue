@@ -18,7 +18,7 @@ const props = defineProps({
 .titleContainer {
   display: flex;
   justify-content: center;
-  margin: 32px 0px;
+  margin: 0px 0px 32px 0px;
 
   h1 {
     font-size: 36px;
