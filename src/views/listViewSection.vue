@@ -104,6 +104,7 @@ watch(() => store.todos, (newState) => {
 
 .listContainer {
   background-color: #fff;
+  color: $title-color;
   width: 100%;
   border-radius: 8px;
   font-family: $font-family;
